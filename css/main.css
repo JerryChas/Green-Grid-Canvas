@@ -1,0 +1,71 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid_container {
+    background-color: transparent;
+    width: 900px;
+    height: 700px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(40, 1fr);
+    grid-template-rows: repeat(40, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    border: 10px double #00800067;
+    border-radius: 10%;
+
+    &::after {
+        content: '';
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        background-color: rgba(48, 237, 105, 0.159);
+        z-index: -2;
+    }
+   &::before {
+        content: "";
+        background: linear-gradient(0deg, rgba(10,117,0,0) 20%, rgba(10,117,0,1) 50%, rgba(10,117,0,0) 80%);        position: absolute;
+        
+        min-width: 100%;
+        min-height: 100%;
+        position: absolute;
+        left:0;
+        top: 0;
+        z-index: -1;
+
+        animation: topToBottom 3s ease-in-out infinite alternate  ;
+   }
+}
+
+@keyframes topToBottom {
+    0% { 
+        top:-30%;
+    }
+    100% {    
+        top: 30%
+    }
+}
+
+.cell {
+    background-color: black;
+    transition: background-color 10s ease-out;
+    
+
+    &:hover {
+        background-color: transparent;
+        transition: 0s step-start;
+    }
+}
